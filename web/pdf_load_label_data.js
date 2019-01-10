@@ -661,34 +661,7 @@ class PDFLoadLabelDataUtils {
         if(queryTrim===tmpQueryStr_){
           query = tmpQueryStr;
         }
-        // query = this.trim(query);
-        // // debugger
-        // query = this.replaceLastWord(query);
-         
-        // if(this.startWith(query,":")){
-        //   query = query.substring(1,query.length);
-        // }
-        // if(this.startWith(query,"：")){
-        //   query = query.substring(1,query.length);
-        // }
         
-        // if(query===undefined){
-        //   return false;
-        // }
-        // console.log("1111query : "+query);
-        // var query_first_char = query.substring(0,3);
-        // var query_last_char = query.substring(query.length-2,query.length);
-        // var regStr = query_first_char+"(.*?)(?="+query_last_char+")";
-        // var reg = new RegExp(regStr);
-        // var tempStr = pageContent.match(reg); //
-        // console.log("regStr : "+regStr);
-        // console.log("22222query : "+query);
-        // console.log("111111tempStr : "+tempStr);
-        // if(tempStr){
-        //   console.log("22222222tempStr : "+tempStr);
-        //   query = tempStr[0];
-        // }
-
         return query;
   }
 
