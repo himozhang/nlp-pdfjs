@@ -1,0 +1,25 @@
+/***************************项目导入本地及打包*****************************/
+$ git clone https://github.com/mozilla/pdf.js.git
+$ cd pdf.js
+$ npm install -g gulp-cli
+项目打包命令：  gulp generic 
+
+
+/***************************启动*****************************/
+启动命令 ：gulp server
+
+/***************************项目说明*****************************/
+1、修改项目参数在/web/app_options.js文件中，包括默认打开的PDF文件路径（line：38）
+2、修改默认的本地化在/web/app_options.js文件line：223-->navigator.language : 'en-US' 修改为zh-CN
+3、updatetextlayermatches在/web/text_layer_bulider.js --line：360，方法目的，调用updateMatches（）更新匹配
+4、updateMatches()-->1）删除所有matches，2）覆盖matches，3）renderMatches()
+5、renderMatches()-->1)获得textContentItemsStr，2）beginText（）设置开始divId，设置className，3）追加文本到Div-->appendTextToDiv()
+6、添加高亮主要调用renderMatches()方法-->matches=matches: Array(2)--详见matches.png
+7、高亮定位主要调用_ui_utils.scrollIntoView方法--》 scrollIntoView(textDivs[begin.divIdx], spot, /* skipOverflowHiddenElements = */true);
+8、app（line：1149） --》document metadataLoadFinish后，触发metadataLoadFinish事件，metadataLoadFinish定义在text_layer_bulider.js中line：370
+
+/************高亮显示主要思路***************/
+1、将所有文档进行遍历，然后对每一段查找匹配，找到以后，调用renderMatches()重新绘制span-highlight selected样式，没有包含的，则直接显示，最后渲染效果如下（查找关键字：住所）：
+<div style="left: 148.333px; top: 318.046px; font-size: 20px; font-family: sans-serif; transform: scaleX(1);" class="">
+	<span class="highlight selected">住所</span>地：河南省郑州市金水区明珠新城明珠西路
+</div>
