@@ -8,7 +8,7 @@
             "type": "chrome",
             "request": "launch",
             "name": "启动程序",
-            "url": "http://localhost:8888/web/viewer.html",
+            "url": "http://localhost:7788/web/viewer.html",
             "webRoot": "${workspaceRoot}"
         }
     ]
